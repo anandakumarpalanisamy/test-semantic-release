@@ -1,0 +1,58 @@
+name: Release
+
+on: workflow_dispatch
+
+jobs:
+  App:
+    name: My Expo App
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      # - name: Setup Expo and EAS
+      #   uses: expo/expo-github-action@v8
+      #   with:
+      #     eas-version: latest
+      #     packager: npm
+      #     token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 📦 Install packages
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+      # - name: Evaluate next release version
+      #   id: release-version
+      #   uses: Sujimoshi/semantic-release-action@v1.8.0
+      #   with:
+      #     branches: |
+      #       main
+      #     plugins: |
+      #       @semantic-release/commit-analyzer
+      #       @semantic-release/release-notes-generator
+
+      # - name: Get Next Release Version
+      #   run: |
+      #     echo "Version: ${{ steps.release-version.outputs.version }}"
+      #     echo "Type: ${{ steps.release-version.outputs.type }}"
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
+
+      # - name: 🏗️ Build on EAS
+      #   run: |
+      #     eas build \
+      #       --non-interactive \
+      #       --platform android \
+      #       --no-wait \
+      #       --profile production

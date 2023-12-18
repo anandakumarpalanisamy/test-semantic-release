@@ -1,0 +1,17 @@
+{
+  "name": "test-semantic-release",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/anandakumarpalanisamy/test-semantic-release.git"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release-expo": "^2.2.3",
+    "typescript": "^5.3.3"
+  }
+}
