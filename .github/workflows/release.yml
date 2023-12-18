@@ -16,6 +16,7 @@ jobs:
       packages: write
       pages: write
       deployments: write
+      repository-projects: write
     steps:
       - uses: actions/checkout@v3
 
