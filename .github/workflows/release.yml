@@ -18,6 +18,7 @@ jobs:
       deployments: write
       repository-projects: write
       statuses: write
+      discussions: write
     steps:
       - uses: actions/checkout@v3
 
