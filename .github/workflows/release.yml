@@ -7,18 +7,9 @@ jobs:
     name: My Expo App
     runs-on: ubuntu-latest
     permissions:
-      actions: write
-      checks: write
       contents: write # to be able to publish a GitHub release
       issues: write # to be able to comment on released issues
       pull-requests: write
-      security-events: write
-      packages: write
-      pages: write
-      deployments: write
-      repository-projects: write
-      statuses: write
-      discussions: write
     steps:
       - uses: actions/checkout@v3
 
