@@ -13,6 +13,7 @@ jobs:
       issues: write # to be able to comment on released issues
       pull-requests: write
       security-events: write
+      packages: write
     steps:
       - uses: actions/checkout@v3
 
